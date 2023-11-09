@@ -1,0 +1,15 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.docker
+
+# Python
+djangoexercise/__pycache__/
+djangoexercise/*/__pycache__/
+djangoexercise/*/*/__pycache__/
+djangoexercise/*/*/*/__pycache__/
+.env/
+.venv/
+venv/
