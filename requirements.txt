@@ -3,3 +3,4 @@ Django>=3.2.4,<3.3
 djangorestframework>=3.12.4,<3.13
 sqlparse==0.4.4
 typing_extensions==4.8.0
+psycopg2>=2.8.5,<2.9
