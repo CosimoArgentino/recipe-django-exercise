@@ -19,7 +19,7 @@ class ModelTest(TestCase):
 
         sample_emails = [
             ['test1@EXAMPLE.com', 'test1@example.com'],
-            ['Test2Example.com', 'Test2@example.com'],
+            ['Test2@Example.com', 'Test2@example.com'],
         ]
 
         for email, expected in sample_emails:
