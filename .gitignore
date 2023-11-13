@@ -1,0 +1,7 @@
+.idea
+app/__pycache__
+core/*/__pycache__
+core/*/*/__pycache__
+core/__pycache__
+user/__pycache__
+user/*/__pycache__
