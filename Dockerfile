@@ -5,7 +5,10 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
-COPY app /app
+COPY manage.py /app/
+COPY app /app/app
+COPY core /app/core
+COPY user /app/user
 WORKDIR /app
 EXPOSE 8000
 
