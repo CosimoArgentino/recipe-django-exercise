@@ -1,5 +1,3 @@
-from decimal import Decimal
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
@@ -29,17 +27,18 @@ def create_recipe(**params):
 
 class RecipeAPITests(TestCase):
 
+
     def setUp(self):
         self.client = APIClient()
 
     def test_retrieve_recipe(self):
 
-        create_recipe()
-        create_recipe()
+        create_recipe(name='Pizza 1')
+        create_recipe(name='Pasta 2')
 
         res = self.client.get(RECIPES_URL)
 
-        recipes = Recipe.objects.all().order_by('-id')
+        recipes = Recipe.objects.all().order_by('-name')
         serializer = RecipeSerializer(recipes, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)

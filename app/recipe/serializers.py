@@ -5,7 +5,7 @@ from core.models import Recipe, Ingredient
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ['id','name']
+        fields = ['id', 'name']
         read_only_fields = ['id']
 
 
@@ -31,14 +31,14 @@ class RecipeSerializer(serializers.ModelSerializer):
             self._add_ingredients(ingredients, recipe)
         return recipe
 
-    def update(self, instance: Recipe, validated_data):
-        ingredients = validated_data.pop("ingredients", None)
-        for k, v in validated_data.items():
-            setattr(instance, k, v)
-
-        if ingredients:
+    def update(self, instance, validated_data):
+        ingredients = validated_data.pop('ingredients', None)
+        if ingredients is not None:
             instance.ingredients.all().delete()
-            self._add_ingredients(ingredients, instance)
+            self._add_ingredients(ingredients, recipe=instance)
+
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
 
         instance.save()
         return instance
