@@ -25,8 +25,8 @@ def create_recipe(**params):
     recipe = Recipe.objects.create(**defaults)
     return recipe
 
-class RecipeAPITests(TestCase):
 
+class RecipeAPITests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
