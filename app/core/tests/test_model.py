@@ -12,4 +12,4 @@ class ModelTest(TestCase):
             description='Sample recipe description',
         )
 
-        self.assertEqual(str(recipe), recipe.title)
+        self.assertEqual(str(recipe), recipe.name)
