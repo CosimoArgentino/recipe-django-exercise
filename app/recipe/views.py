@@ -6,8 +6,10 @@ from rest_framework.response import Response
 
 
 class RecipeViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.RecipeSerializer
     queryset = Recipe.objects.all()
+
+    def get_serializer_class(self):
+        return serializers.RecipeSerializer
 
     def get_queryset(self):
         name = self.request.query_params.get('name')
@@ -17,14 +19,15 @@ class RecipeViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(name__startswith=name)
         return queryset.all().order_by('-name')
 
+    def create(self, request, *args, **kwargs):
+        return super(RecipeViewSet, self).create(request, *args, **kwargs)
 
-class IngredientViewSet(viewsets.GenericViewSet):
-    serializer_class = serializers.IngredientSerializer
-    queryset = Ingredient.objects.all()
+    def update(self, request, *args, **kwargs):
+        return super(RecipeViewSet, self).update(request, *args, **kwargs)
 
-    def get_queryset(self):
-        return self.queryset.all().order_by('-name')
+    def list(self, request, *args, **kwargs):
+        return super(RecipeViewSet, self).list(request, *args, **kwargs)
 
-    def perform_create(self, serializer):
-        recipe = Recipe.objects.get(id=self.request.data['recipe'])
-        serializer.save(recipe=recipe)
+    def retrieve(self, request, *args, **kwargs):
+        return super(RecipeViewSet, self).retrieve(request, *args, **kwargs)
+
