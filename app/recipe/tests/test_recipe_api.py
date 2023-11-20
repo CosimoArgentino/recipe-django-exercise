@@ -4,9 +4,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 from core.models import Recipe
 from recipe.serializers import RecipeSerializer
-import os
-import tempfile
-from PIL import Image
+
 
 RECIPES_URL = reverse('recipe:recipe-list')
 

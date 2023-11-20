@@ -1,8 +1,6 @@
-from rest_framework import viewsets, status
-from core.models import Recipe, Ingredient
+from rest_framework import viewsets
+from core.models import Recipe
 from recipe import serializers
-from rest_framework.decorators import action
-from rest_framework.response import Response
 
 
 class RecipeViewSet(viewsets.ModelViewSet):
@@ -30,4 +28,3 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         return super(RecipeViewSet, self).retrieve(request, *args, **kwargs)
-
