@@ -19,13 +19,17 @@ services:
 
   db:
     image: postgres:13-alpine
+    read_only: true
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - pg-run:/var/run/postgresql
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
+    security_opt:
+      - no-new-privileges:true
 
   proxy:
     build:
@@ -41,3 +45,4 @@ services:
 volumes:
   postgres-data:
   static-data:
+  pg-run:
